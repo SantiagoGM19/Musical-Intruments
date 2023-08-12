@@ -1,6 +1,6 @@
 package com.devops.musicalinstruments.services;
 
-import com.devops.musicalinstruments.InstrumentsRepository;
+import com.devops.musicalinstruments.repositories.InstrumentRepository;
 import com.devops.musicalinstruments.model.Instrument;
 import org.springframework.stereotype.Service;
 
@@ -10,32 +10,32 @@ import java.util.Optional;
 @Service
 public class CRUDInstrumentsServiceImpl implements CRUDInstrumentsService{
 
-    private final InstrumentsRepository instrumentsRepository;
+    private final InstrumentRepository instrumentRepository;
 
-    public CRUDInstrumentsServiceImpl(InstrumentsRepository instrumentsRepository){
-        this.instrumentsRepository =  instrumentsRepository;
+    public CRUDInstrumentsServiceImpl(InstrumentRepository instrumentRepository){
+        this.instrumentRepository = instrumentRepository;
     }
 
     @Override
     public void addInstrument(Instrument instrument) {
-        instrumentsRepository.save(instrument);
+        instrumentRepository.save(instrument);
     }
 
     @Override
     public Optional<Instrument> getInstrumentById(Long id) {
-        return instrumentsRepository.findById(id);
+        return instrumentRepository.findById(id);
     }
 
     @Override
     public List<Instrument> getAllInstruments() {
-        return instrumentsRepository.findAll();
+        return instrumentRepository.findAll();
     }
 
     @Override
     public Boolean updateInstrument(Instrument instrument) {
         Boolean instrumentUpdated= false;
-        if(instrumentsRepository.existsById(instrument.getId())){
-            instrumentsRepository.save(instrument);
+        if(instrumentRepository.existsById(instrument.getId())){
+            instrumentRepository.save(instrument);
             instrumentUpdated = true;
         }
         return instrumentUpdated;
@@ -44,8 +44,8 @@ public class CRUDInstrumentsServiceImpl implements CRUDInstrumentsService{
     @Override
     public Boolean deleteInstrument(Long id) {
         Boolean elementDeleted = false;
-        if(instrumentsRepository.existsById(id)){
-            instrumentsRepository.deleteById(id);
+        if(instrumentRepository.existsById(id)){
+            instrumentRepository.deleteById(id);
             elementDeleted=true;
         }
         return elementDeleted;

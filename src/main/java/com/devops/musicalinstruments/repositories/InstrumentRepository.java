@@ -1,9 +1,9 @@
-package com.devops.musicalinstruments;
+package com.devops.musicalinstruments.repositories;
 
 import com.devops.musicalinstruments.model.Instrument;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface InstrumentsRepository extends JpaRepository<Instrument, Long> {
+public interface InstrumentRepository extends JpaRepository<Instrument, Long> {
 }
