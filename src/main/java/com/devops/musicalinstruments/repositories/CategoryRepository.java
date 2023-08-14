@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
-    @Query("SELECT * FROM instruments WHERE category_id=?1")
+    @Query("SELECT i FROM Instrument i WHERE i.category_id = ?1")
     List<Instrument> findInstrumentsByCategoryId(Long categoryId);
 }

@@ -4,13 +4,13 @@ import com.devops.musicalinstruments.model.Instrument;
 import com.devops.musicalinstruments.services.CRUDInstrumentsService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@Controller
-@RequestMapping(path = "api/v1/instruments")
+@RestController
+@RequestMapping("/api/v1")
+@CrossOrigin(origins = "http://localhost:8080")
 public class InstrumentController {
 
     private final CRUDInstrumentsService crudInstrumentsService;
@@ -19,7 +19,7 @@ public class InstrumentController {
         this.crudInstrumentsService = crudInstrumentsService;
     }
 
-    @PostMapping
+    @PostMapping("/instruments")
     public ResponseEntity<String> addInstrument(@RequestBody Instrument instrument){
         try{
             crudInstrumentsService.addInstrument(instrument);
@@ -29,7 +29,7 @@ public class InstrumentController {
         }
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/instruments/{id}")
     public ResponseEntity<Optional<Instrument>> getInstrumentById(@PathVariable Long id){
         try{
             Optional<Instrument> instrumentFound = crudInstrumentsService.getInstrumentById(id);
@@ -42,7 +42,7 @@ public class InstrumentController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/instruments")
     public ResponseEntity<List<Instrument>> getAllInstruments(){
         try{
             List<Instrument> instrumentsFetched = crudInstrumentsService.getAllInstruments();
@@ -52,7 +52,7 @@ public class InstrumentController {
         }
     }
 
-    @PutMapping()
+    @PutMapping("/instruments")
     public ResponseEntity<String> updateInstrument(@RequestBody Instrument instrument){
         try{
             Boolean instrumentUpdated = crudInstrumentsService.updateInstrument(instrument);
@@ -65,7 +65,7 @@ public class InstrumentController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/instruments/{id}")
     public ResponseEntity<String> deleteInstrument(@PathVariable Long id){
         try{
             Boolean elementIsDeleted = crudInstrumentsService.deleteInstrument(id);

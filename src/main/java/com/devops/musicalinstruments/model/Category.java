@@ -1,10 +1,17 @@
 package com.devops.musicalinstruments.model;
 
-import jakarta.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.OneToMany;
+import javax.persistence.CascadeType;
+import javax.persistence.JoinColumn;
 
 import java.util.List;
 
-@Entity
+@Entity(name = "Category")
 @Table(name = "categories")
 public class Category {
 
@@ -21,6 +28,10 @@ public class Category {
         this.id = id;
         this.name = name;
         this.instruments = instruments;
+    }
+
+    public Category(){
+
     }
 
     public Long getId() {

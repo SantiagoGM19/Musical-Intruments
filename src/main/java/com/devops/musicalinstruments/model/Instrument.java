@@ -1,10 +1,12 @@
 package com.devops.musicalinstruments.model;
 
-import jakarta.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
-import java.util.Objects;
-
-@Entity
+@Entity(name = "Instrument")
 @Table(name = "instruments")
 public class Instrument {
 
@@ -15,18 +17,24 @@ public class Instrument {
     private String model;
 
     private Long category_id;
+
     private Double price;
 
     //years
     private Integer usefullLifeTime;
 
 
-    public Instrument(Long id, String name, String model, Double price, Integer usefullLifeTime) {
+    public Instrument(Long id, String name, String model, Double price, Integer usefullLifeTime, Long category_id) {
         this.id = id;
         this.name = name;
         this.model = model;
         this.price = price;
         this.usefullLifeTime = usefullLifeTime;
+        this.category_id = category_id;
+    }
+
+    public Instrument(){
+
     }
 
     public Long getId() {
@@ -67,5 +75,13 @@ public class Instrument {
 
     public void setUsefullLifeTime(Integer usefullLifeTime) {
         this.usefullLifeTime = usefullLifeTime;
+    }
+
+    public Long getCategory_id() {
+        return category_id;
+    }
+
+    public void setCategory_id(Long category_id) {
+        this.category_id = category_id;
     }
 }
