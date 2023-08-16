@@ -1,5 +1,6 @@
 FROM openjdk:17-jdk-alpine
-EXPOSE 8081:8081
-RUN mkdir -p /app/
-ADD build/libs/musical-instruments-0.0.1-SNAPSHOT.jar /app/musical-instruments.jar
+RUN mkdir /app
+COPY musical-instruments.jar /app/musical-instruments.jar
+WORKDIR /app
+EXPOSE 8081
 ENTRYPOINT ["java", "-Dspring.profiles.active=production", "-jar", "/app/musical-instruments.jar"]
