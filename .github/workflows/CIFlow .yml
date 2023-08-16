@@ -45,7 +45,7 @@ jobs:
       run: ./gradlew test
 
     - name: Create jar directory
-      run: mkdir /app
+      run: sudo mkdir /app
 
     - name: Copy jar file
       run: mv build/libs/$(ls build/libs) /app/musical-instruments.jar
