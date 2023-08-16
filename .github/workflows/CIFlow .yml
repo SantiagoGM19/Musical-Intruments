@@ -44,8 +44,11 @@ jobs:
     - name: Run tests
       run: ./gradlew test
 
+    - name: Create jar directory
+      run: mkdir /app
+
     - name: Copy jar file
-      run: mv build/libs/$(ls build/libs) musical-instruments.jar
+      run: mv build/libs/$(ls build/libs) /app/musical-instruments.jar
 
     - name: Upload jar file
       uses: actions/upload-artifact@master
