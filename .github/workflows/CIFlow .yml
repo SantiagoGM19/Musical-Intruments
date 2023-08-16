@@ -78,9 +78,12 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Set env
+      run: sudo echo "DATE=$(date +%s)" >> $GITHUB_ENV
         
     - name: Build and push image
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/musical-instruments-app:latest
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/musical-instruments-app:${{ env.DATE }}
