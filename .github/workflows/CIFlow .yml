@@ -47,7 +47,7 @@ jobs:
       run: ./gradlew test
 
     - name: Copy jar file
-      run: sudo mv build/libs/$(ls build/libs) musical-instruments.jar
+      run: sudo mv build/libs/musical-instruments-0.0.1-SNAPSHOT.jar musical-instruments.jar
 
     - name: Upload jar file
       uses: actions/upload-artifact@master
