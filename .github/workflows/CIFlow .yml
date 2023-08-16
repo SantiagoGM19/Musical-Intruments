@@ -50,7 +50,7 @@ jobs:
       run: sudo mkdir /app
 
     - name: Copy jar file
-      run: mv build/libs/$(ls build/libs) /app/musical-instruments.jar
+      run: sudo mv build/libs/$(ls build/libs) /app/musical-instruments.jar
 
     - name: Upload jar file
       uses: actions/upload-artifact@master
