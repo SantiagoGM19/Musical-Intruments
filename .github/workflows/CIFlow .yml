@@ -46,17 +46,14 @@ jobs:
     - name: Run tests
       run: ./gradlew test
 
-    - name: Create jar directory
-      run: sudo mkdir /app
-
     - name: Copy jar file
-      run: sudo mv build/libs/$(ls build/libs) /app/musical-instruments.jar
+      run: sudo mv build/libs/$(ls build/libs) musical-instruments.jar
 
     - name: Upload jar file
       uses: actions/upload-artifact@master
       with:
         name: jar-file
-        path: /app/musical-instruments.jar
+        path: musical-instruments.jar
 
   build-image:
 
@@ -67,14 +64,11 @@ jobs:
 
     - uses: actions/checkout@v3
 
-    - name: Create jar directory
-      run: sudo mkdir /app
-
     - name: Download jar file
       uses: actions/download-artifact@master
       with:
         name: jar-file
-        path: /app/musical-instruments.jar
+        path: musical-instruments.jar
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
