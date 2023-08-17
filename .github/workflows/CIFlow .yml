@@ -39,7 +39,7 @@ jobs:
       uses: gradle/gradle-build-action@v2
 
     - name: Build project
-      uses: ./gradlew build -x test
+      run: ./gradlew build -x test
       
     - name: Gradle build
       run: |
