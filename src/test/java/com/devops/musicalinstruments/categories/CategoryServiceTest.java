@@ -42,7 +42,7 @@ public class CategoryServiceTest {
         Category category2 = new Category(1L, "Percusion", List.of());
         Category category3 = new Category(1L, "Teclas", List.of());
         Category category4 = new Category(1L, "Viento", List.of());
-        int expectedNumberOfCategories = 2;
+        int expectedNumberOfCategories = 4;
         List<Category> categoriesExpected = List.of(category1,category2,category3,category4);
         Mockito.when(categoryRepository.findAll()).thenReturn(categoriesExpected);
 
